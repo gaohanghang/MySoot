@@ -1,4 +1,4 @@
-package cn.tedu.shoot;
+package cn.ghang.shoot;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

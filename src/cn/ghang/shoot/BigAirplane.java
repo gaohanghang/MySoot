@@ -1,17 +1,17 @@
-package cn.tedu.shoot;
+package cn.ghang.shoot;
 
 import java.awt.image.BufferedImage;
 
 /**
- * 小敌机: 既是飞行物，也是敌人能得分
+ * 大敌机: 既是飞行物，也是敌人能得分
  */
-public class Airplane extends FlyingObject implements Enemy {
+public class BigAirplane extends FlyingObject implements Enemy {
     private static BufferedImage[] images; //图片数组
 
     static {
         images = new BufferedImage[5]; //5张图片
         for (int i = 0; i < images.length; i++) { //遍历图片数组
-            images[i] = loadImage("airplane" + i + ".png");
+            images[i] = loadImage("bigplane" + i + ".png"); //读取图片
         }
     }
 
@@ -20,13 +20,13 @@ public class Airplane extends FlyingObject implements Enemy {
     /**
      * 构造方法
      */
-    public Airplane() {
-        super(49, 36);
-        this.step = 2;
+    public BigAirplane() {
+        super(69, 99);
+        step = 2;
     }
 
     /**
-     * 小敌机移动
+     * 大敌机移动
      */
     public void step() {
         y += step; //y+(向下)
@@ -54,14 +54,18 @@ public class Airplane extends FlyingObject implements Enemy {
      * 重写outOfBounds()判断是否越界
      */
     public boolean outOfBounds() {
-        return this.y >= World.HEIGHT; //小敌机的y>=窗口的高，即为越界了
+        return this.y >= World.HEIGHT; //大敌机的y>=窗口的高，即为越界了
     }
 
-    /** 重写getScore()得分 */
+    /**
+     * 重写getScore()得分
+     */
     public int getScore() {
-        return 1; //打掉一个小敌机，得1分
+        return 3; //打掉一个大敌机，得3分
     }
+
 }
+
 
 
 

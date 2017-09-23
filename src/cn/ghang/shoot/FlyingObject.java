@@ -1,4 +1,4 @@
-package cn.tedu.shoot;
+package cn.ghang.shoot;
 
 import java.util.Random;
 import java.awt.image.BufferedImage;

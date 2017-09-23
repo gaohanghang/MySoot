@@ -1,35 +1,45 @@
-package cn.tedu.shoot;
+package cn.ghang.shoot;
 
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 /**
- * 大敌机: 既是飞行物，也是敌人能得分
+ * 小蜜蜂: 既是飞行物，也是奖励
  */
-public class BigAirplane extends FlyingObject implements Enemy {
+public class Bee extends FlyingObject implements Award {
     private static BufferedImage[] images; //图片数组
 
     static {
         images = new BufferedImage[5]; //5张图片
         for (int i = 0; i < images.length; i++) { //遍历图片数组
-            images[i] = loadImage("bigplane" + i + ".png"); //读取图片
+            images[i] = loadImage("bee" + i + ".png"); //读取图片
         }
     }
 
-    private int step; //移动速度
+    private int xStep; //x坐标移动速度
+    private int yStep; //y坐标移动速度
+    private int awardType; //奖励类型(0和1)
 
     /**
      * 构造方法
      */
-    public BigAirplane() {
-        super(69, 99);
-        step = 2;
+    public Bee() {
+        super(60, 50);
+        xStep = 1; //x移动速度
+        yStep = 2; //y移动速度
+        Random rand = new Random();
+        awardType = rand.nextInt(2); //0到1之间的随机数
     }
 
     /**
-     * 大敌机移动
+     * 小蜜蜂移动
      */
     public void step() {
-        y += step; //y+(向下)
+        x += xStep; //x+(向左或向右)
+        y += yStep; //y+(向下)
+        if (x <= 0 || x >= World.WIDTH - this.width) { //蜜蜂飞到两边了
+            xStep *= -1; //修改xStep的正负值来实现向左或向右
+        }
     }
 
     int deadIndex = 1; //死了的起始下标
@@ -54,14 +64,14 @@ public class BigAirplane extends FlyingObject implements Enemy {
      * 重写outOfBounds()判断是否越界
      */
     public boolean outOfBounds() {
-        return this.y >= World.HEIGHT; //大敌机的y>=窗口的高，即为越界了
+        return this.y >= World.HEIGHT; //小蜜蜂的y>=窗口的高，即为越界了
     }
 
     /**
-     * 重写getScore()得分
+     * 重写getType()获取奖励类型
      */
-    public int getScore() {
-        return 3; //打掉一个大敌机，得3分
+    public int getType() {
+        return awardType; //返回奖励类型(0到1之间的随机数)
     }
 
 }

@@ -1,4 +1,4 @@
-package cn.tedu.shoot;
+package cn.ghang.shoot;
 
 /**
  * 奖励接口

@@ -1,4 +1,4 @@
-package cn.tedu.shoot;
+package cn.ghang.shoot;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
