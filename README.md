@@ -14,4 +14,4 @@
 
 *游戏结束*
 
-![](http://omi0o6pp2.bkt.clouddn.com/gameover.png?imageView2/0/w/200/h/200/q/75|imageslim)
+![](http://omi0o6pp2.bkt.clouddn.com/gameover.png)
